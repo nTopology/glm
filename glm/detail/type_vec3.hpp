@@ -93,6 +93,18 @@ namespace glm
 		GLM_FUNC_DECL GLM_CONSTEXPR T & operator[](length_type i);
 		GLM_FUNC_DECL GLM_CONSTEXPR T const& operator[](length_type i) const;
 
+		// nTopology additions to match OpenMesh: normalize, vectorize, sqrnorm, norm
+		type& normalize() {
+			T invS = ((T)1) / norm();
+			x *= invS;
+			y *= invS;
+			z *= invS;
+			return *this;
+		}
+		type& vectorize(const T& _s) { x = _s; y = _s; z = _s; return *this; }
+		T sqrnorm() const { return x*x + y*y + z*z; }
+		T norm() const { return sqrt(sqrnorm()); }
+
 		// -- Implicit basic constructors --
 
 		GLM_FUNC_DECL GLM_CONSTEXPR vec() GLM_DEFAULT;
