@@ -2,7 +2,7 @@
 
 add_library(glm INTERFACE)
 
-target_include_directories(glm INTERFACE .)
+target_include_directories(glm SYSTEM INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 
 target_compile_definitions(glm INTERFACE GLM_FORCE_SIZE_FUNC)
 
