@@ -53,7 +53,9 @@ namespace glm
 		
 			union
 			{
-				struct quatStruct { T x, y, z, w;};
+				#pragma warning(disable : 4201)
+				struct { T x, y, z, w;};
+				#pragma warning(default : 4201)
 				typename detail::storage<T, sizeof(T) * 4, detail::is_aligned<P>::value>::type data;
 			};
 		
